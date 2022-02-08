@@ -7,21 +7,50 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D436DA3627A9462C007FF5F0 /* ContactListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D436DA3527A9462C007FF5F0 /* ContactListView.swift */; };
+		D436DA3727A9462C007FF5F0 /* ContactListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D436DA3527A9462C007FF5F0 /* ContactListView.swift */; };
+		D4A0075927B0EFD600BC31A9 /* ModifierView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A0075827B0EFD600BC31A9 /* ModifierView.swift */; };
+		D4C3930E27B23E7D006CC3E9 /* LogInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C3930D27B23E7D006CC3E9 /* LogInViewModel.swift */; };
+		D4C3930F27B23E7D006CC3E9 /* LogInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C3930D27B23E7D006CC3E9 /* LogInViewModel.swift */; };
 		D4D2334727A7CF8B00C8D3C6 /* ContactListApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D2333727A7CF8800C8D3C6 /* ContactListApp.swift */; };
 		D4D2334827A7CF8B00C8D3C6 /* ContactListApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D2333727A7CF8800C8D3C6 /* ContactListApp.swift */; };
 		D4D2334927A7CF8B00C8D3C6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D2333827A7CF8800C8D3C6 /* ContentView.swift */; };
 		D4D2334A27A7CF8B00C8D3C6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D2333827A7CF8800C8D3C6 /* ContentView.swift */; };
 		D4D2334B27A7CF8B00C8D3C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4D2333927A7CF8B00C8D3C6 /* Assets.xcassets */; };
 		D4D2334C27A7CF8B00C8D3C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4D2333927A7CF8B00C8D3C6 /* Assets.xcassets */; };
+		D4D2335A27A7D66000C8D3C6 /* CustomViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D2335927A7D66000C8D3C6 /* CustomViews.swift */; };
+		D4D2335E27A7DA2C00C8D3C6 /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D4D2335C27A7DA2C00C8D3C6 /* Lato-Regular.ttf */; };
+		D4D2335F27A7DA2C00C8D3C6 /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D4D2335C27A7DA2C00C8D3C6 /* Lato-Regular.ttf */; };
+		D4D2336027A7DA2C00C8D3C6 /* Lato-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D4D2335D27A7DA2C00C8D3C6 /* Lato-Semibold.ttf */; };
+		D4D2336127A7DA2C00C8D3C6 /* Lato-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D4D2335D27A7DA2C00C8D3C6 /* Lato-Semibold.ttf */; };
+		D4D2336327A7DA3E00C8D3C6 /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D4D2336227A7DA3E00C8D3C6 /* Lato-Bold.ttf */; };
+		D4D2336427A7DA3E00C8D3C6 /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D4D2336227A7DA3E00C8D3C6 /* Lato-Bold.ttf */; };
+		D4D2336627A7DB7700C8D3C6 /* UIColor+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D2336527A7DB7700C8D3C6 /* UIColor+Additions.swift */; };
+		D4D2336727A7DB7700C8D3C6 /* UIColor+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D2336527A7DB7700C8D3C6 /* UIColor+Additions.swift */; };
+		D4D2336A27A8E68800C8D3C6 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D2336927A8E68800C8D3C6 /* SignUpView.swift */; };
+		D4D2336B27A8E68800C8D3C6 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D2336927A8E68800C8D3C6 /* SignUpView.swift */; };
+		D4D2336D27A9012300C8D3C6 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D2336C27A9012300C8D3C6 /* SignUpViewModel.swift */; };
+		D4D2336E27A9012300C8D3C6 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D2336C27A9012300C8D3C6 /* SignUpViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D436DA3527A9462C007FF5F0 /* ContactListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListView.swift; sourceTree = "<group>"; };
+		D4A0075827B0EFD600BC31A9 /* ModifierView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifierView.swift; sourceTree = "<group>"; };
+		D4C3930D27B23E7D006CC3E9 /* LogInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewModel.swift; sourceTree = "<group>"; };
 		D4D2333727A7CF8800C8D3C6 /* ContactListApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListApp.swift; sourceTree = "<group>"; };
 		D4D2333827A7CF8800C8D3C6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		D4D2333927A7CF8B00C8D3C6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D4D2333E27A7CF8B00C8D3C6 /* ContactList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ContactList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4D2334427A7CF8B00C8D3C6 /* ContactList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ContactList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4D2334627A7CF8B00C8D3C6 /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
+		D4D2335527A7D2F900C8D3C6 /* ContactList--iOS--Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "ContactList--iOS--Info.plist"; sourceTree = "<group>"; };
+		D4D2335927A7D66000C8D3C6 /* CustomViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViews.swift; sourceTree = "<group>"; };
+		D4D2335C27A7DA2C00C8D3C6 /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Regular.ttf"; sourceTree = "<group>"; };
+		D4D2335D27A7DA2C00C8D3C6 /* Lato-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Semibold.ttf"; sourceTree = "<group>"; };
+		D4D2336227A7DA3E00C8D3C6 /* Lato-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Bold.ttf"; sourceTree = "<group>"; };
+		D4D2336527A7DB7700C8D3C6 /* UIColor+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Additions.swift"; sourceTree = "<group>"; };
+		D4D2336927A8E68800C8D3C6 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		D4D2336C27A9012300C8D3C6 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +74,7 @@
 		D4D2333127A7CF8700C8D3C6 = {
 			isa = PBXGroup;
 			children = (
+				D4D2335527A7D2F900C8D3C6 /* ContactList--iOS--Info.plist */,
 				D4D2333627A7CF8800C8D3C6 /* Shared */,
 				D4D2334527A7CF8B00C8D3C6 /* macOS */,
 				D4D2333F27A7CF8B00C8D3C6 /* Products */,
@@ -55,7 +85,10 @@
 			isa = PBXGroup;
 			children = (
 				D4D2333727A7CF8800C8D3C6 /* ContactListApp.swift */,
-				D4D2333827A7CF8800C8D3C6 /* ContentView.swift */,
+				D4D2335627A7D5D800C8D3C6 /* View */,
+				D4D2335727A7D5ED00C8D3C6 /* ViewModel */,
+				D4D2335827A7D60F00C8D3C6 /* Helper */,
+				D4D2336827A7EBD200C8D3C6 /* extensions */,
 				D4D2333927A7CF8B00C8D3C6 /* Assets.xcassets */,
 			);
 			path = Shared;
@@ -76,6 +109,53 @@
 				D4D2334627A7CF8B00C8D3C6 /* macOS.entitlements */,
 			);
 			path = macOS;
+			sourceTree = "<group>";
+		};
+		D4D2335627A7D5D800C8D3C6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D4D2333827A7CF8800C8D3C6 /* ContentView.swift */,
+				D4D2336927A8E68800C8D3C6 /* SignUpView.swift */,
+				D436DA3527A9462C007FF5F0 /* ContactListView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D4D2335727A7D5ED00C8D3C6 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				D4D2336C27A9012300C8D3C6 /* SignUpViewModel.swift */,
+				D4C3930D27B23E7D006CC3E9 /* LogInViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		D4D2335827A7D60F00C8D3C6 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				D4D2335927A7D66000C8D3C6 /* CustomViews.swift */,
+				D4A0075827B0EFD600BC31A9 /* ModifierView.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		D4D2335B27A7DA1800C8D3C6 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				D4D2335C27A7DA2C00C8D3C6 /* Lato-Regular.ttf */,
+				D4D2335D27A7DA2C00C8D3C6 /* Lato-Semibold.ttf */,
+				D4D2336227A7DA3E00C8D3C6 /* Lato-Bold.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		D4D2336827A7EBD200C8D3C6 /* extensions */ = {
+			isa = PBXGroup;
+			children = (
+				D4D2335B27A7DA1800C8D3C6 /* Fonts */,
+				D4D2336527A7DB7700C8D3C6 /* UIColor+Additions.swift */,
+			);
+			path = extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -158,6 +238,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				D4D2334B27A7CF8B00C8D3C6 /* Assets.xcassets in Resources */,
+				D4D2335E27A7DA2C00C8D3C6 /* Lato-Regular.ttf in Resources */,
+				D4D2336027A7DA2C00C8D3C6 /* Lato-Semibold.ttf in Resources */,
+				D4D2336327A7DA3E00C8D3C6 /* Lato-Bold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -166,6 +249,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				D4D2334C27A7CF8B00C8D3C6 /* Assets.xcassets in Resources */,
+				D4D2335F27A7DA2C00C8D3C6 /* Lato-Regular.ttf in Resources */,
+				D4D2336127A7DA2C00C8D3C6 /* Lato-Semibold.ttf in Resources */,
+				D4D2336427A7DA3E00C8D3C6 /* Lato-Bold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -177,7 +263,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				D4D2334927A7CF8B00C8D3C6 /* ContentView.swift in Sources */,
+				D436DA3627A9462C007FF5F0 /* ContactListView.swift in Sources */,
+				D4D2336A27A8E68800C8D3C6 /* SignUpView.swift in Sources */,
+				D4D2336627A7DB7700C8D3C6 /* UIColor+Additions.swift in Sources */,
+				D4C3930E27B23E7D006CC3E9 /* LogInViewModel.swift in Sources */,
+				D4D2335A27A7D66000C8D3C6 /* CustomViews.swift in Sources */,
+				D4D2336D27A9012300C8D3C6 /* SignUpViewModel.swift in Sources */,
 				D4D2334727A7CF8B00C8D3C6 /* ContactListApp.swift in Sources */,
+				D4A0075927B0EFD600BC31A9 /* ModifierView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -185,8 +278,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4C3930F27B23E7D006CC3E9 /* LogInViewModel.swift in Sources */,
+				D4D2336B27A8E68800C8D3C6 /* SignUpView.swift in Sources */,
 				D4D2334A27A7CF8B00C8D3C6 /* ContentView.swift in Sources */,
+				D4D2336E27A9012300C8D3C6 /* SignUpViewModel.swift in Sources */,
+				D436DA3727A9462C007FF5F0 /* ContactListView.swift in Sources */,
 				D4D2334827A7CF8B00C8D3C6 /* ContactListApp.swift in Sources */,
+				D4D2336727A7DB7700C8D3C6 /* UIColor+Additions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -313,9 +411,9 @@
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "ContactList--iOS--Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -342,9 +440,9 @@
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "ContactList--iOS--Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
