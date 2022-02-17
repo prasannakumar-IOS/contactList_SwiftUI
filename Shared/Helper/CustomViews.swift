@@ -21,7 +21,7 @@ struct CLTextFieldStyle: TextFieldStyle {
     }
 }
 
-struct inputView: View {
+struct InputView: View {
     
     @Binding var text: String
     var titleText: String
@@ -30,14 +30,20 @@ struct inputView: View {
         VStack {
             Text(titleText)
                 .titleTextModifiers()
-            TextField(titleText, text: $text)
-                .padding(.bottom, 20)
+            if titleText == "Username" || titleText == "Email" {
+                TextField(titleText, text: $text)
+                    .autocapitalization(.none)
+                    .padding(.bottom, 20)
+            } else {
+                TextField(titleText, text: $text)
+                    .padding(.bottom, 20)
+            }
         }
         .backgroundViewModifiers()
     }
 }
 
-struct secureInputView: View {
+struct SecureInputView: View {
     
     @Binding var text: String
     var titleText: String
@@ -47,13 +53,14 @@ struct secureInputView: View {
             Text(titleText)
                 .titleTextModifiers()
             SecureField(titleText, text: $text)
+                .autocapitalization(.none)
                 .padding(.bottom, 20)
         }
         .backgroundViewModifiers()
     }
 }
 
-struct addressInputView: View {
+struct AddressInputView: View {
     
     var titleText: [String]
     @Binding var streetAddressFirst: String
@@ -81,5 +88,39 @@ struct addressInputView: View {
         .cornerRadius(5)
     }
 }
+
+struct CLBackgroundColor: View {
+    var body: some View {
+        Color.paleGrey
+            .ignoresSafeArea()
+    }
+}
+
+struct DisplayUserDataView: View {
+    
+    var titleText: String
+    var userData: String
+    
+    var body: some View {
+        VStack {
+            Text(titleText)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(EdgeInsets(top: 15, leading: 20, bottom: 0, trailing: 20))
+                .font(.custom("Lato-Regular", size: 14))
+                .foregroundColor(.black85)
+            Spacer().frame(height: 1)
+            Text(userData)
+                .frame(maxWidth: .infinity,minHeight: 22, alignment: .leading)
+                .padding(EdgeInsets(top: 0, leading: 20, bottom: 15, trailing: 20))
+                .font(.custom("Lato-Regular", size: 18))
+                .foregroundColor(.darkishPink)
+        }
+        .frame(maxWidth: .infinity)
+        .background(Color.white)
+        .cornerRadius(5)
+        Spacer().frame(height: 6)
+    }
+}
+
 
 

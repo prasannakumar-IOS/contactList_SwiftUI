@@ -9,9 +9,13 @@ import SwiftUI
 
 @main
 struct ContactListApp: App {
+    
+    let persistenceController = PersistenceManager.shared
+    
     var body: some Scene {
         WindowGroup {
-            ContentView().environmentObject(SignUpViewModel())
+            ContentView()
+                .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
 }

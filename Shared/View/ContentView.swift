@@ -9,40 +9,25 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @State private var userName = ""
-    @State private var passWord = ""
-    @State private var isSignUpOk = false
-    @State private var userLogInEmailWrong = false
-    @State private var userLogInPasswordWrong = false
-    @State private var isContactListOk = false
-    @EnvironmentObject var usersDetails: SignUpViewModel
-    var logInViewModel = LogInViewModel()
+    @StateObject var logInViewModel = LogInViewModel()
     
     var body: some View {
         NavigationView {
             ZStack {
-                Color.paleGrey
-                    .ignoresSafeArea()
+                CLBackgroundColor()
                 ScrollView {
                     VStack {
                         Image("logo")
                             .resizable()
                             .frame(width: 85, height: 85)
                             .padding(EdgeInsets(top: 50, leading: 0, bottom: 50, trailing: 0))
-                        inputView(text: $userName, titleText: "Username")
+                        InputView(text: $logInViewModel.userName, titleText: "Username")
                             .padding(.bottom, 0)
-                        secureInputView(text: $passWord, titleText: "Password")
+                        SecureInputView(text: $logInViewModel.passWord, titleText: "Password")
                             .padding(.bottom, 10)
-                        NavigationLink(destination: ContactListView(), isActive: $isContactListOk) {
+                        NavigationLink(destination: ContactListView(), isActive: $logInViewModel.isContactListOk) {
                             Button(action: {
-                                let validUser = logInViewModel.checkLoginUser(email: userName, password: passWord, personDetails: usersDetails.personDetails)
-                                if validUser == 0, userName != "", passWord != "" {
-                                    isContactListOk = true
-                                } else if validUser == 1 {
-                                    userLogInPasswordWrong = true
-                                } else {
-                                    userLogInEmailWrong = true
-                                }
+                                logInViewModel.fetchRequest()
                             }) {
                                 Text("Login")
                                     .foregroundColor(.white)
@@ -59,9 +44,9 @@ struct ContentView: View {
                                 .navigationButtonTextViewModifiers()
                         }
                         Spacer().frame(height: 29)
-                        NavigationLink(destination: SignUpView(isSignUpOk: $isSignUpOk), isActive: $isSignUpOk) {
+                        NavigationLink(destination: SignUpView(isSignUpOk: $logInViewModel.isSignUpOk), isActive: $logInViewModel.isSignUpOk) {
                             Button(action: {
-                               isSignUpOk = true
+                                logInViewModel.isSignUpOk = true
                             }) {
                                 Text("Signup")
                                     .navigationButtonTextViewModifiers()
@@ -72,12 +57,12 @@ struct ContentView: View {
                             .font(.custom("Lato-Regular", size: 10))
                             .foregroundColor(.darkishPink)
                     }
-                    .alert("Invalid", isPresented: $userLogInEmailWrong, actions: {
-                            Button("OK", role: .cancel) { }
-                    }, message: {Text("Please register your email ID")})
-                    .alert("Invalid", isPresented: $userLogInPasswordWrong, actions: {
-                            Button("OK", role: .cancel) { }
-                    }, message: {Text("Invalid password, Please enter the valid password!")})
+                    .alert("Invalid", isPresented: $logInViewModel.userLogInEmailWrong, actions: {
+                        Button("OK", role: .cancel) { logInViewModel.userLogInEmailWrong = false }
+                    }, message: {Text("Please register your email ID :)")})
+                    .alert("Invalid", isPresented: $logInViewModel.userLogInPasswordWrong, actions: {
+                            Button("OK", role: .cancel) { logInViewModel.userLogInPasswordWrong = false }
+                    }, message: {Text("Invalid password, Please enter the valid password :)")})
                     .textFieldStyle(CLTextFieldStyle())
                     .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
                 }
@@ -85,5 +70,6 @@ struct ContentView: View {
             .navigationBarHidden(true)
         }
     }
+
 }
 

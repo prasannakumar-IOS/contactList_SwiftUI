@@ -9,37 +9,26 @@ import SwiftUI
 
 struct SignUpView: View {
     
-    @EnvironmentObject var usersDetails: SignUpViewModel
+    @StateObject var signupViewModel = SignUpViewModel()
+    @State var isSignInError = false
     @Binding var isSignUpOk: Bool
-    @State private var email: String = ""
-    @State private var firstName: String = ""
-    @State private var lastName: String = ""
-    @State private var company: String = ""
-    @State private var phoneNumber: String = ""
-    @State private var passWord: String = ""
-    @State private var streetAddressFirst: String = ""
-    @State private var streetAddressSecond: String = ""
-    @State private var cityAddress: String = ""
-    @State private var stateAddress: String = ""
-    @State private var postalCode: String = ""
     
     var body: some View {
         ZStack {
-            Color.paleGrey
-                .ignoresSafeArea()
+            CLBackgroundColor()
             ScrollView {
                 VStack {
                     Spacer().frame(height: 16)
                     HStack {
-                        inputView(text: $firstName, titleText: "First name")
-                        inputView(text: $lastName, titleText: "Last name")
+                        InputView(text: $signupViewModel.firstName, titleText: "First name")
+                        InputView(text: $signupViewModel.lastName, titleText: "Last name")
                     }
-                    inputView(text: $company, titleText: "Company")
-                    inputView(text: $email, titleText: "Email")
-                    inputView(text: $phoneNumber, titleText: "Phone")
-                    secureInputView(text: $passWord, titleText: "Password")
-                    secureInputView(text: $passWord, titleText: "Confirm password")
-                    addressInputView(titleText: ["Street", "Street", "City", "State", "Postal code"], streetAddressFirst: $streetAddressFirst, streetAddressSecond: $streetAddressSecond, cityAddress: $cityAddress, stateAddress: $stateAddress, postalCode: $postalCode)
+                    InputView(text: $signupViewModel.company, titleText: "Company")
+                    InputView(text: $signupViewModel.email, titleText: "Email")
+                    InputView(text: $signupViewModel.phoneNumber, titleText: "Phone")
+                    SecureInputView(text: $signupViewModel.passWord, titleText: "Password")
+                    SecureInputView(text: $signupViewModel.passWord, titleText: "Confirm password")
+                    AddressInputView(titleText: addressInputTitles, streetAddressFirst: $signupViewModel.streetAddressFirst, streetAddressSecond: $signupViewModel.streetAddressSecond, cityAddress: $signupViewModel.cityAddress, stateAddress: $signupViewModel.stateAddress, postalCode: $signupViewModel.postalCode)
                 }
                 .textFieldStyle(CLTextFieldStyle())
                 .padding(EdgeInsets(top: 0, leading: 19, bottom: 0, trailing: 19))
@@ -47,17 +36,39 @@ struct SignUpView: View {
             }
             .navigationBarBackButtonHidden(true)
             .navigationBarTitle(Text("Signup"), displayMode: .inline)
-            .navigationBarItems(leading: Button(action: {isSignUpOk = false}) {
+            .navigationBarItems(leading: Button(action: {
+                isSignUpOk = false
+                getCoreDataDBPath()
+            }) {
                 Text("Cancel")
                     .navigationButtonTextViewModifiers()
             }, trailing: Button(action: {
-                usersDetails.personDetails.append(userDetails(email: email, name: firstName + " " + lastName, company: company, phoneNumber: phoneNumber, passWord: passWord, address: streetAddressFirst + "|" + streetAddressSecond + "|" + cityAddress + "|" + stateAddress + "|" + postalCode, profilePicture: usersDetails.SetProfilePic(firstName: String(firstName.first!), lastName: String(lastName.first!))))
-                isSignUpOk = false
+                if signupViewModel.saveContent() == false {
+                    isSignInError = true
+                } else {
+                    isSignUpOk = false
+                }
             }) {
                 Text("Save")
                     .navigationButtonTextViewModifiers()
             })
+            .alert("Invalid", isPresented: $isSignInError, actions: {
+                    Button("OK", role: .cancel) { }
+            }, message: {Text("Please enter the valid details :)")})
         }
     }
+    
+    func getCoreDataDBPath() {
+              let path = FileManager
+                  .default
+                  .urls(for: .applicationSupportDirectory, in: .userDomainMask)
+                  .last?
+                  .absoluteString
+                  .replacingOccurrences(of: "file://", with: "")
+                  .removingPercentEncoding
+
+              print("😀Core Data DB Path :: \(path ?? "Not found")")
+          }
+
 }
 

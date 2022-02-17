@@ -9,40 +9,26 @@ import SwiftUI
 
 struct ContactListView: View {
     
-    @EnvironmentObject var usersDetails: SignUpViewModel
     @Environment(\.dismiss) private var dismiss
+    @State private var searchName = ""
     
     var body: some View {
         ZStack {
-            Color.paleGrey
-                .ignoresSafeArea()
+            CLBackgroundColor()
             List {
-                ForEach(0..<usersDetails.personDetails.count, id: \.self) { userIndex in
-                    HStack {
-                        Image(uiImage: UIImage(data: usersDetails.personDetails[userIndex].profilePicture as Data)!)
-                            .resizable()
-                            .frame(width: 50, height: 50)
-                            .cornerRadius(25)
-                        Spacer().frame(width: 10)
-                        Text(usersDetails.personDetails[userIndex].name)
-                            .font(.custom("Lato-Bold", size: 18))
-                            .foregroundColor(Color.black85)
-                        Spacer()
-                        Button(action: {}) {
-                            Text("Follow")
-                                .navigationButtonTextViewModifiers()
-                        }
-                        .buttonStyle(BorderlessButtonStyle())
-                    }
-                    .background(Color.white)
-                    .frame(height: 70)
-                }
+                ContactListCellView()
             }
+            .onAppear(perform: {
+                UITableView.appearance().contentInset.top = -35
+            })
             .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
             .refreshable {
                 dismiss()
             }
             .listStyle(.grouped)
+            .searchable(text: $searchName, placement: .navigationBarDrawer(displayMode: .always)) {
+                let _ = print("😀\(searchName)")
+            }
             .navigationBarBackButtonHidden(true)
             .navigationViewStyle(StackNavigationViewStyle())
             .navigationBarTitle(Text("Contacts"), displayMode: .inline)
@@ -54,13 +40,11 @@ struct ContactListView: View {
                     .resizable()
                     .frame(width: 24, height: 24)
             })
-            .navigationBarColor(.paleGrey2)
+            .toolbar {
+                EditButton()
+            }
+            //   .navigationBarColor(.paleGrey2)
         }
     }
 }
 
-struct ContactListView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContactListView()
-    }
-}

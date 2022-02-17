@@ -6,25 +6,45 @@
 //
 
 import SwiftUI
+import CoreData
 
-class LogInViewModel {
+class LogInViewModel: ObservableObject {
+    
+    @Published var userName = "James@gmail.com"
+    @Published var passWord = "James007@"
+    @Published var isSignUpOk = false
+    @Published var userLogInEmailWrong = false
+    @Published var userLogInPasswordWrong = false
+    @Published var isContactListOk = false
 
     
-    func checkLoginUser(email: String, password: String, personDetails: [userDetails]) -> Int {
-        
-        var userLoginError = 0
-        
-        for users in personDetails {
-            if users.email == email {
-                if users.passWord == password {
-                    userLoginError = 0
+    func fetchRequest() {
+        let userData = PersistenceManager.shared.fetchUserForLogin(userMail: userName)
+        if userData.count > 0 {
+            for userLogin in userData {
+                print("😀\(userLogin.email)")
+                if userLogin.password == passWord {
+                    isContactListOk = true
+                    break
                 } else {
-                    userLoginError = 1
+                    userLogInPasswordWrong = true
+                    break
                 }
-            } else {
-                userLoginError = 2
             }
+        } else {
+            userLogInEmailWrong = true
         }
-        return userLoginError
     }
+
+    func getCoreDataDBPath() {
+              let path = FileManager
+                  .default
+                  .urls(for: .applicationSupportDirectory, in: .userDomainMask)
+                  .last?
+                  .absoluteString
+                  .replacingOccurrences(of: "file://", with: "")
+                  .removingPercentEncoding
+
+              print("😀Core Data DB Path :: \(path ?? "Not found")")
+          }
 }

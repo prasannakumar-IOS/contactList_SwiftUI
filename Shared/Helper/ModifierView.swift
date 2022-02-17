@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct titleTextModifier : ViewModifier {
+struct TitleTextModifier : ViewModifier {
     func body(content: Content) -> some View {
         content
             .foregroundColor(.darkishPink)
@@ -17,7 +17,14 @@ struct titleTextModifier : ViewModifier {
     }
 }
 
-struct backgroundViewModifier : ViewModifier {
+struct CLBackgroundColourModifier : ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .background(Color.paleGrey.ignoresSafeArea())
+    }
+}
+
+struct BackgroundViewModifier : ViewModifier {
     func body(content: Content) -> some View {
         content
             .frame(height: 91)
@@ -26,13 +33,14 @@ struct backgroundViewModifier : ViewModifier {
     }
 }
 
-struct navigationButtonTextViewModifier : ViewModifier {
+struct NavigationButtonTextViewModifier : ViewModifier {
     func body(content: Content) -> some View {
         content
             .font(.custom("Lato-Regular", size: 17))
             .foregroundColor(.darkishPink)
     }
 }
+
 
 struct NavigationBarModifier: ViewModifier {
         
@@ -48,7 +56,6 @@ struct NavigationBarModifier: ViewModifier {
         UINavigationBar.appearance().compactAppearance = coloredAppearance
         UINavigationBar.appearance().scrollEdgeAppearance = coloredAppearance
         UINavigationBar.appearance().tintColor = .white
-
     }
     
     func body(content: Content) -> some View {
@@ -68,18 +75,22 @@ struct NavigationBarModifier: ViewModifier {
 
 extension View {
     func titleTextModifiers() -> some View {
-        modifier(titleTextModifier())
+        modifier(TitleTextModifier())
     }
     
     func backgroundViewModifiers() -> some View {
-        modifier(backgroundViewModifier())
+        modifier(BackgroundViewModifier())
     }
     
     func navigationButtonTextViewModifiers() -> some View {
-        modifier(navigationButtonTextViewModifier())
+        modifier(NavigationButtonTextViewModifier())
+    }
+    
+    func backgroundColourModifiers() -> some View {
+        modifier(CLBackgroundColourModifier())
     }
     
     func navigationBarColor(_ backgroundColor: UIColor?) -> some View {
-           self.modifier(NavigationBarModifier(backgroundColor: backgroundColor))
-       }
+        self.modifier(NavigationBarModifier(backgroundColor: backgroundColor))
+    }
 }
