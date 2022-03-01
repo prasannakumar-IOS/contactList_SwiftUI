@@ -38,4 +38,16 @@ class PersonDetailsDisplayViewModel: ObservableObject {
             self.postalCode = userAddress?[4] ?? ""
         }
     }
+    
+    func loadData(defaultPic: Data) -> UIImage {
+        if let pref = UserDefaults(suiteName: "group.com.mallow.share") {
+            if let imageData = pref.object(forKey: "Image") {
+                print("😀\(imageData)")
+                return UIImage(data: imageData as! Data) ?? UIImage(data: defaultPic)!
+            }
+        }
+        return UIImage(data: defaultPic)!
+    }
+    
 }
+

@@ -10,6 +10,7 @@ import SwiftUI
 struct ContentView: View {
     
     @StateObject var logInViewModel = LogInViewModel()
+    @EnvironmentObject var appState: AppState
     
     var body: some View {
         NavigationView {
@@ -25,7 +26,7 @@ struct ContentView: View {
                             .padding(.bottom, 0)
                         SecureInputView(text: $logInViewModel.passWord, titleText: "Password")
                             .padding(.bottom, 10)
-                        NavigationLink(destination: ContactListView(), isActive: $logInViewModel.isContactListOk) {
+                        NavigationLink(destination: ContactListView( isContactList: $logInViewModel.isContactListOk), isActive: $logInViewModel.isContactListOk) {
                             Button(action: {
                                 logInViewModel.fetchRequest()
                             }) {
@@ -65,11 +66,17 @@ struct ContentView: View {
                     }, message: {Text("Invalid password, Please enter the valid password :)")})
                     .textFieldStyle(CLTextFieldStyle())
                     .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
+                    .onReceive(self.appState.$goToLogIn) { goToLogIn in
+                        if goToLogIn {
+                            appState.goToLogIn = false
+                        }
+                    }
+
                 }
             }
+            .defaultAppStorage(.standard)
             .navigationBarHidden(true)
-        }
+        }.navigationViewStyle(StackNavigationViewStyle())
     }
-
 }
 

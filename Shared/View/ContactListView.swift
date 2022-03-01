@@ -11,12 +11,15 @@ struct ContactListView: View {
     
     @Environment(\.dismiss) private var dismiss
     @State private var searchName = ""
+    @EnvironmentObject var appState: AppState
+    @Binding var isContactList: Bool
+    var contactListViewModel = ContactListViewModel()
     
     var body: some View {
         ZStack {
             CLBackgroundColor()
             List {
-                ContactListCellView()
+                ContactListCellView(searchName: $searchName)
             }
             .onAppear(perform: {
                 UITableView.appearance().contentInset.top = -35
@@ -28,7 +31,7 @@ struct ContactListView: View {
             .listStyle(.grouped)
             .searchable(text: $searchName, placement: .navigationBarDrawer(displayMode: .always)) {
                 let _ = print("😀\(searchName)")
-            }
+            }.autocapitalization(.none)
             .navigationBarBackButtonHidden(true)
             .navigationViewStyle(StackNavigationViewStyle())
             .navigationBarTitle(Text("Contacts"), displayMode: .inline)
@@ -43,8 +46,17 @@ struct ContactListView: View {
             .toolbar {
                 EditButton()
             }
-            //   .navigationBarColor(.paleGrey2)
+//            .onAppear( perform: {
+//                contactListViewModel.customizeNavigationBar()
+//            })
+            .onReceive(self.appState.$goToLogIn) { goToLogIn in
+                if goToLogIn {
+                    isContactList = false
+                }
+            }
         }
+ 
+
     }
 }
 

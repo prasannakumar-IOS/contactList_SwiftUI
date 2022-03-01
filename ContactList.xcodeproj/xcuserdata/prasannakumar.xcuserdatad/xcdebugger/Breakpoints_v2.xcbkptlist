@@ -3,4 +3,209 @@
    uuid = "3909289A-F05F-42B1-B22A-C5A0AC945424"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C6B0DBCA-4B95-4110-9861-64CF50E0A30F"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Shared/View/PersonDetailsDisplayView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6AB3A0A9-0488-49FF-AB1D-FCE63B38B3EE"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Shared/ViewModel/PersonDetailsDisplayViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
+            landmarkName = "PersonDetailsDisplayViewModel"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "75792D35-76CE-40A8-B7E7-E2FE6F330F04"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "shareFiles/ShareViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "67"
+            endingLineNumber = "67"
+            landmarkName = "showAlertForSave(imageData:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "73D008B4-8C40-438C-BC2B-4F46A450265A"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "shareFiles/ShareViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
+            landmarkName = "showAlertForSave(imageData:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5E5F3217-AEC7-4E3C-89DE-F8B1B11ACB98"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "shareFiles/ShareViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
+            landmarkName = "showAlertForSave(imageData:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "5E5F3217-AEC7-4E3C-89DE-F8B1B11ACB98 - b3781c8276c98abd"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "shareFiles.ShareViewController.userConfiguration.getter : __C.SLComposeSheetConfigurationItem"
+                  moduleName = "shareFiles"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/prasannakumar/SwiftUI/contactList_SwiftUI/shareFiles/ShareViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "78"
+                  endingLineNumber = "78"
+                  offsetFromSymbolStart = "128">
+               </Location>
+               <Location
+                  uuid = "5E5F3217-AEC7-4E3C-89DE-F8B1B11ACB98 - 3321d351a5f68729"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; __C.SLComposeSheetConfigurationItem in shareFiles.ShareViewController.userConfiguration.getter : __C.SLComposeSheetConfigurationItem"
+                  moduleName = "shareFiles"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/prasannakumar/SwiftUI/contactList_SwiftUI/shareFiles/ShareViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "79"
+                  endingLineNumber = "79"
+                  offsetFromSymbolStart = "60">
+               </Location>
+               <Location
+                  uuid = "5E5F3217-AEC7-4E3C-89DE-F8B1B11ACB98 - 1e7937be28a786c9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "shareFiles.ShareViewController.userConfiguration.setter : __C.SLComposeSheetConfigurationItem"
+                  moduleName = "shareFiles"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/prasannakumar/SwiftUI/contactList_SwiftUI/shareFiles/ShareViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "78"
+                  endingLineNumber = "78"
+                  offsetFromSymbolStart = "108">
+               </Location>
+               <Location
+                  uuid = "5E5F3217-AEC7-4E3C-89DE-F8B1B11ACB98 - 1bc58b4853976ba8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "shareFiles.ShareViewController.userConfiguration.modify : __C.SLComposeSheetConfigurationItem"
+                  moduleName = "shareFiles"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/prasannakumar/SwiftUI/contactList_SwiftUI/shareFiles/ShareViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "20">
+               </Location>
+               <Location
+                  uuid = "5E5F3217-AEC7-4E3C-89DE-F8B1B11ACB98 - 17884cb5b4ca9e3b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "shareFiles.ShareViewController.userConfiguration.modify : __C.SLComposeSheetConfigurationItem with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "shareFiles"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/prasannakumar/SwiftUI/contactList_SwiftUI/shareFiles/ShareViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "78"
+                  endingLineNumber = "78"
+                  offsetFromSymbolStart = "20">
+               </Location>
+               <Location
+                  uuid = "5E5F3217-AEC7-4E3C-89DE-F8B1B11ACB98 - a820620d7044425"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "shareFiles.ShareViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; shareFiles.ShareViewController"
+                  moduleName = "shareFiles"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/prasannakumar/SwiftUI/contactList_SwiftUI/shareFiles/ShareViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "78"
+                  endingLineNumber = "78"
+                  offsetFromSymbolStart = "80">
+               </Location>
+               <Location
+                  uuid = "5E5F3217-AEC7-4E3C-89DE-F8B1B11ACB98 - 56c0719a9595b12e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "shareFiles.ShareViewController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;shareFiles.ShareViewController&gt;"
+                  moduleName = "shareFiles"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/prasannakumar/SwiftUI/contactList_SwiftUI/shareFiles/ShareViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "78"
+                  endingLineNumber = "78"
+                  offsetFromSymbolStart = "56">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1F8358D3-9BD5-492A-8E8E-FF993652B22F"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Shared/Helper/PersistenceManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "88"
+            endingLineNumber = "88"
+            landmarkName = "fetchUserForLogin(userMail:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

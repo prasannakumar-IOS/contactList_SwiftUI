@@ -11,10 +11,12 @@ import SwiftUI
 struct ContactListApp: App {
     
     let persistenceController = PersistenceManager.shared
+    @StateObject var appState = AppState()
     
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(appState)
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }

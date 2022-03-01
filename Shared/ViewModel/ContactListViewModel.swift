@@ -7,9 +7,14 @@
 
 import SwiftUI
 
-struct ContactListViewModel: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+class ContactListViewModel {
+    
+    func customizeNavigationBar() {
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = UIColor.paleGrey2
+        UINavigationBar.appearance().standardAppearance = appearance;
+        UINavigationBar.appearance().scrollEdgeAppearance = UINavigationBar.appearance().standardAppearance
     }
 }
 

@@ -10,9 +10,11 @@ import SwiftUI
 struct SignUpView: View {
     
     @StateObject var signupViewModel = SignUpViewModel()
-    @State var isSignInError = false
+    @State private var isSignInError = false
     @Binding var isSignUpOk: Bool
-    
+    @State private var showWebView = false
+    let angularGradient = AngularGradient(gradient: Gradient(colors: [.blue, .white, .blue, .white]), center: .center, angle: .degrees(90))
+
     var body: some View {
         ZStack {
             CLBackgroundColor()
@@ -29,6 +31,25 @@ struct SignUpView: View {
                     SecureInputView(text: $signupViewModel.passWord, titleText: "Password")
                     SecureInputView(text: $signupViewModel.passWord, titleText: "Confirm password")
                     AddressInputView(titleText: addressInputTitles, streetAddressFirst: $signupViewModel.streetAddressFirst, streetAddressSecond: $signupViewModel.streetAddressSecond, cityAddress: $signupViewModel.cityAddress, stateAddress: $signupViewModel.stateAddress, postalCode: $signupViewModel.postalCode)
+                    HStack {
+                        Text("Accept the")
+                            .foregroundColor(.darkishPink)
+                        Link(destination: URL(string: "https://www.mallow-tech.com/")!, label: {
+                            Text("Terms & conditions")
+                                .underline()
+                        })
+                    }
+                    Button {
+                        showWebView = true
+                    } label: {
+                        Text("Accept the terms & conditions")
+                            .foregroundColor(.darkishPink)
+                    }
+                    .sheet(isPresented: $showWebView) {
+                        NavigationView {
+                            WebView(url: URL(string: "https://www.mallow-tech.com/")!)
+                        }
+                    }
                 }
                 .textFieldStyle(CLTextFieldStyle())
                 .padding(EdgeInsets(top: 0, leading: 19, bottom: 0, trailing: 19))
@@ -38,7 +59,6 @@ struct SignUpView: View {
             .navigationBarTitle(Text("Signup"), displayMode: .inline)
             .navigationBarItems(leading: Button(action: {
                 isSignUpOk = false
-                getCoreDataDBPath()
             }) {
                 Text("Cancel")
                     .navigationButtonTextViewModifiers()
@@ -55,6 +75,9 @@ struct SignUpView: View {
             .alert("Invalid", isPresented: $isSignInError, actions: {
                     Button("OK", role: .cancel) { }
             }, message: {Text("Please enter the valid details :)")})
+//            Circle()
+//                .fill(angularGradient)
+//                .frame(width: 100, height: 100)
         }
     }
     
@@ -66,7 +89,6 @@ struct SignUpView: View {
                   .absoluteString
                   .replacingOccurrences(of: "file://", with: "")
                   .removingPercentEncoding
-
               print("😀Core Data DB Path :: \(path ?? "Not found")")
           }
 

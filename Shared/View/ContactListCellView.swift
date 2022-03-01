@@ -12,10 +12,10 @@ struct ContactListCellView: View {
     @FetchRequest(entity: Users.entity(), sortDescriptors: [])
     var usersPersonalDetails: FetchedResults<Users>
     @Environment(\.managedObjectContext) var managedObjectContext
-
+    @Binding var searchName: String
     
     var body: some View {
-        ForEach(usersPersonalDetails, id: \.self) { user in
+        ForEach(filterTheNames(), id: \.self) { user in
             if let user = user {
                 HStack {
                     Image(uiImage: UIImage(data: (user.profilePicture ?? Data()) as Data)!)
@@ -45,6 +45,20 @@ struct ContactListCellView: View {
                 let _ = PersistenceManager.shared.saveContext()
             }
         })
+    }
+    
+    func filterTheNames() -> [FetchedResults<Users>.Element] {
+        return usersPersonalDetails.filter {
+            var result = false
+            if searchName == "" {
+                return true
+            } else {
+                if let firstName = $0.firstName, let lastName = $0.lastName {
+                    result = (firstName + " " + lastName).contains(searchName) as? Bool ?? false
+                }
+                return result
+            }
+        }
     }
 }
 

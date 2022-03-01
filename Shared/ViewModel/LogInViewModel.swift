@@ -25,6 +25,9 @@ class LogInViewModel: ObservableObject {
                 print("😀\(userLogin.email)")
                 if userLogin.password == passWord {
                     isContactListOk = true
+                    UserDefaults.standard.set(userName, forKey: "userLogInEmail")
+                    let mySharedDefaults = UserDefaults(suiteName: "group.com.mallow.share")
+                    mySharedDefaults?.set(true, forKey: "userLogInStatus")
                     break
                 } else {
                     userLogInPasswordWrong = true
