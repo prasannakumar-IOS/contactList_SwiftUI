@@ -39,17 +39,6 @@ struct SignUpView: View {
                                 .underline()
                         })
                     }
-                    Button {
-                        showWebView = true
-                    } label: {
-                        Text("Accept the terms & conditions")
-                            .foregroundColor(.darkishPink)
-                    }
-                    .sheet(isPresented: $showWebView) {
-                        NavigationView {
-                            WebView(url: URL(string: "https://www.mallow-tech.com/")!)
-                        }
-                    }
                 }
                 .textFieldStyle(CLTextFieldStyle())
                 .padding(EdgeInsets(top: 0, leading: 19, bottom: 0, trailing: 19))
@@ -75,22 +64,7 @@ struct SignUpView: View {
             .alert("Invalid", isPresented: $isSignInError, actions: {
                     Button("OK", role: .cancel) { }
             }, message: {Text("Please enter the valid details :)")})
-//            Circle()
-//                .fill(angularGradient)
-//                .frame(width: 100, height: 100)
         }
     }
-    
-    func getCoreDataDBPath() {
-              let path = FileManager
-                  .default
-                  .urls(for: .applicationSupportDirectory, in: .userDomainMask)
-                  .last?
-                  .absoluteString
-                  .replacingOccurrences(of: "file://", with: "")
-                  .removingPercentEncoding
-              print("😀Core Data DB Path :: \(path ?? "Not found")")
-          }
-
 }
 

@@ -7,6 +7,8 @@
 
 import SwiftUI
 import CoreData
+import Combine
+import Alamofire
 
 class SignUpViewModel: ObservableObject {
     
@@ -23,6 +25,7 @@ class SignUpViewModel: ObservableObject {
     @Published var postalCode: String = ""
     @Environment(\.managedObjectContext) var userData
     var persistenceManager = PersistenceManager()
+    var cancelToken: AnyCancellable?
     
     func saveContent() -> Bool {
         if isUserSignUpSuccess() {
@@ -41,10 +44,10 @@ class SignUpViewModel: ObservableObject {
     func SetProfilePic(firstName: String, lastName: String) -> NSData {
         let nameInitialize = UILabel()
         nameInitialize.frame.size = CGSize(width: 50.0, height: 50.0)
-        nameInitialize.textColor = UIColor.white
+        nameInitialize.textColor = UIColor.black25
         nameInitialize.text = firstName + lastName
         nameInitialize.textAlignment = NSTextAlignment.center
-        nameInitialize.backgroundColor = UIColor.black
+        nameInitialize.backgroundColor = UIColor.paleGrey2
         nameInitialize.layer.cornerRadius = 50.0
         UIGraphicsBeginImageContext(nameInitialize.frame.size)
         nameInitialize.layer.render(in: UIGraphicsGetCurrentContext()!)
@@ -88,6 +91,35 @@ class SignUpViewModel: ObservableObject {
             return false
         } else {
             return true
+        }
+    }
+    
+    func saveDetailsInServer() {
+        let parameters = ["user": ["email": email, "first_name": firstName, "last_name": lastName, "phone_number": phoneNumber, "address": "\(streetAddressFirst)|\(streetAddressSecond)|\(cityAddress)|\(stateAddress)", "password": "\(passWord)"]]
+        cancelToken = UserManager.shared.signUpAPI(parameters: parameters).sink(receiveValue: { response in
+            if response.error != nil {
+                print("Error")
+            } else if let data = response.data {
+                do {
+                    let value = try JSONDecoder().decode(Message.self, from: data)
+                    print(value.message)
+                } catch {
+//                    Error
+                }
+            }
+        })
+    }
+    
+    func saveDetailsInServerJson() {
+        let parameters = ["user": ["email": email, "first_name": firstName, "last_name": lastName, "phone_number": phoneNumber, "address": "\(streetAddressFirst)|\(streetAddressSecond)|\(cityAddress)|\(stateAddress)", "password": "\(passWord)"]]
+        AF.request(APIUrlCalls.signupUrl.urlString, method: .post, parameters: parameters).responseJSON { response in
+            debugPrint(response)
+            switch response.result {
+            case .success(_):
+                print("success")
+            case .failure(_):
+                print("Error")
+            }
         }
     }
 }

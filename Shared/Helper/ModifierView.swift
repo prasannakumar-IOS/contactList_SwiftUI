@@ -10,7 +10,7 @@ import SwiftUI
 struct TitleTextModifier : ViewModifier {
     func body(content: Content) -> some View {
         content
-            .foregroundColor(.darkishPink)
+            .foregroundColor(.black45)
             .frame(maxWidth: .infinity, alignment: .leading)
             .font(.custom("Lato-Regular", size: 15))
             .padding(EdgeInsets(top: 21, leading: 15, bottom: 0, trailing: 15))

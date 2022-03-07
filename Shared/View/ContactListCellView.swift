@@ -13,6 +13,7 @@ struct ContactListCellView: View {
     var usersPersonalDetails: FetchedResults<Users>
     @Environment(\.managedObjectContext) var managedObjectContext
     @Binding var searchName: String
+    var contactListViewModel = ContactListViewModel()
     
     var body: some View {
         ForEach(filterTheNames(), id: \.self) { user in
@@ -24,9 +25,7 @@ struct ContactListCellView: View {
                         .cornerRadius(25)
                     Spacer().frame(width: 10)
                     if let firstName = user.firstName, let lastName = user.lastName {
-                        Text(firstName + " " + lastName)
-                            .font(.custom("Lato-Bold", size: 18))
-                            .foregroundColor(Color.black85)
+                        Text(contactListViewModel.makeAttributedString(firstName: firstName, lastName: lastName, searchName: searchName))
                     }
                     Spacer()
                     Button(action: {}) {
@@ -37,14 +36,10 @@ struct ContactListCellView: View {
                 }
                 .background(NavigationLink("", destination: PersonDetailsDisplayView(userEmail: user.email ?? "")).opacity(0))
                 .frame(height: 70)
+                .background(Color.white)
+                .listRowSeparator(.hidden)
             }
-        }.onDelete(perform: { index in
-            for index in index {
-                let user = usersPersonalDetails[index]
-                managedObjectContext.delete(user)
-                let _ = PersistenceManager.shared.saveContext()
-            }
-        })
+        }.listRowBackground(Color.paleGrey)
     }
     
     func filterTheNames() -> [FetchedResults<Users>.Element] {

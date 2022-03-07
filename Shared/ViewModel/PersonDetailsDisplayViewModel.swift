@@ -42,7 +42,6 @@ class PersonDetailsDisplayViewModel: ObservableObject {
     func loadData(defaultPic: Data) -> UIImage {
         if let pref = UserDefaults(suiteName: "group.com.mallow.share") {
             if let imageData = pref.object(forKey: "Image") {
-                print("😀\(imageData)")
                 return UIImage(data: imageData as! Data) ?? UIImage(data: defaultPic)!
             }
         }

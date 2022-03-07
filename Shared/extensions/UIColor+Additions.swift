@@ -4,93 +4,93 @@ import SwiftUI
 extension Color {
 
     @nonobjc static var black85: Color {
-    return Color(white: 0.0, opacity: 0.85)
+        return Color("black85")
   }
 
     @nonobjc static var black7: Color {
-    return Color(white: 0.0, opacity: 0.07)
+    return Color("black7")
   }
 
     @nonobjc static var steel12: Color {
-    return Color(red: 142.0 / 255.0, green: 142.0 / 255.0, blue: 147.0 / 255.0, opacity: 0.12)
+    return Color("steel12")
   }
 
     @nonobjc static var white: Color {
-    return Color(white: 1.0, opacity: 1.0)
+    return Color("white")
   }
 
     @nonobjc static var black65: Color {
-    return Color(white: 0.0, opacity: 0.65)
+    return Color("black65")
   }
 
     @nonobjc static var paleGrey: Color {
-    return Color(red: 245.0 / 255.0, green: 247.0 / 255.0, blue: 252.0 / 255.0, opacity: 1.0)
+    return Color("paleGrey")
   }
 
     @nonobjc static var cloudyBlue: Color {
-    return Color(red: 206.0 / 255.0, green: 212.0 / 255.0, blue: 225.0 / 255.0, opacity: 1.0)
+    return Color("cloudyBlue")
   }
 
     @nonobjc static var sunflowerYellow: Color {
-    return Color(red: 1.0, green: 213.0 / 255.0, blue: 0.0, opacity: 1.0)
+    return Color("sunflowerYellow")
   }
 
     @nonobjc static var dustyOrange: Color {
-    return Color(red: 249.0 / 255.0, green: 142.0 / 255.0, blue: 37.0 / 255.0, opacity: 1.0)
+    return Color("dustyOrange")
   }
 
     @nonobjc static var white45: Color {
-    return Color(white: 1.0, opacity: 0.45)
+    return Color("white45")
   }
 
     @nonobjc static var darkishPink60: Color {
-    return Color(red: 235.0 / 255.0, green: 56.0 / 255.0, blue: 120.0 / 255.0, opacity: 0.6)
+    return Color("darkishPink60")
   }
 
     @nonobjc static var veryLightPink: Color {
-    return Color(white: 226.0 / 255.0, opacity: 1.0)
+    return Color("veryLightPink")
   }
 
     @nonobjc static var darkishPink10: Color {
-    return Color(red: 235.0 / 255.0, green: 56.0 / 255.0, blue: 120.0 / 255.0, opacity: 0.1)
+    return Color("darkishPink10")
   }
 
     @nonobjc static var steel: Color {
-    return Color(red: 142.0 / 255.0, green: 142.0 / 255.0, blue: 147.0 / 255.0, opacity: 1.0)
+    return Color("steel")
   }
 
     @nonobjc static var brownishGrey: Color {
-    return Color(white: 111.0 / 255.0, opacity: 1.0)
+    return Color("brownishGrey")
   }
 
     @nonobjc static var black25: Color {
-    return Color(white: 0.0, opacity: 0.25)
+    return Color("black25")
   }
 
     @nonobjc static var black: Color {
-    return Color(white: 3.0 / 255.0, opacity: 1.0)
+    return Color("black")
   }
 
     @nonobjc static var sea: Color {
-    return Color(red: 58.0 / 255.0, green: 157.0 / 255.0, blue: 174.0 / 255.0, opacity: 1.0)
+    return Color("sea")
   }
 
     @nonobjc static var darkishPink: Color {
-    return Color(red: 235.0 / 255.0, green: 56.0 / 255.0, blue: 120.0 / 255.0, opacity: 1.0)
+    return Color("darkishPink")
   }
 
     @nonobjc static var black45: Color {
-    return Color(white: 0.0, opacity: 0.45)
+    return Color("black45")
   }
 
 }
 
 extension UIColor {
     @nonobjc static var paleGrey2: UIColor {
-    return UIColor(red: 245.0 / 255.0, green: 247.0 / 255.0, blue: 252.0 / 255.0, alpha: 1.0)
+        return UIColor(named: "paleGrey") ?? UIColor(.gray)
   }
     
     @nonobjc static var black25: UIColor {
-    return UIColor(white: 0.0, alpha: 0.25)
+        return UIColor(named: "black25") ?? UIColor(.black)
   }
 }

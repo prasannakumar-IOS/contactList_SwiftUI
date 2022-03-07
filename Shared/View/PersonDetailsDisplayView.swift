@@ -33,14 +33,10 @@ struct PersonDetailsDisplayView: View {
                     Spacer().frame(height: 30)
                     ForEach(usersPersonalDetails) { personDetails in
                         Image(uiImage: personDetailsDisplayViewModel.loadData(defaultPic: personDetails.profilePicture!))
-//                            .renderingMode(.template)
                             .resizable()
                             .frame(width: 70, height: 70)
                             .cornerRadius(35)
-                            .gesture(RotationGesture().onChanged({ angle in
-                                self.degree = angle.degrees
-                            }))
-//                            .rotationEffect(.degrees(180))
+                            .shadow(radius: 2)
                         if let firstName = personDetails.firstName, let lastName = personDetails.lastName {
                             Text(firstName + " " + lastName)
                                 .font(.custom("Lato-Regular", size: 18))
@@ -65,6 +61,7 @@ struct PersonDetailsDisplayView: View {
                         }
                         .frame(maxWidth: .infinity, minHeight: 52)
                         .background(Color.white)
+                        .shadow(color: .black7, radius: 1, x: 0, y: 3)
                         Spacer().frame(height: 40)
                         if userEmail == userLogInEmail {
                             Button(action: {
@@ -104,14 +101,7 @@ struct PersonDetailsDisplayView: View {
                 dismiss()
             }
         }
-        .navigationBarBackButtonHidden(true)
-        .navigationBarItems(leading: Button(action: {
-            isEditOk = false
-            dismiss()
-        }) {
-            Text("Cancel")
-                .navigationButtonTextViewModifiers()
-        }, trailing: Button(action: {isEditOk = true}) {
+        .navigationBarItems(trailing: Button(action: {isEditOk = true}) {
             Text("Edit")
                 .navigationButtonTextViewModifiers()
         })

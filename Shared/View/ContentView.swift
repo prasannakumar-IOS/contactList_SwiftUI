@@ -28,7 +28,7 @@ struct ContentView: View {
                             .padding(.bottom, 10)
                         NavigationLink(destination: ContactListView( isContactList: $logInViewModel.isContactListOk), isActive: $logInViewModel.isContactListOk) {
                             Button(action: {
-                                logInViewModel.fetchRequest()
+                                logInViewModel.logINUser()
                             }) {
                                 Text("Login")
                                     .foregroundColor(.white)
@@ -55,8 +55,8 @@ struct ContentView: View {
                         }
                         Spacer().frame(height: 220)
                         Text("version 1.2")
-                            .font(.custom("Lato-Regular", size: 10))
-                            .foregroundColor(.darkishPink)
+                            .font(.custom("Lato-Regular", size: 11))
+                            .foregroundColor(.steel)
                     }
                     .alert("Invalid", isPresented: $logInViewModel.userLogInEmailWrong, actions: {
                         Button("OK", role: .cancel) { logInViewModel.userLogInEmailWrong = false }
@@ -72,6 +72,9 @@ struct ContentView: View {
                         }
                     }
 
+                }
+                if logInViewModel.isLoading {
+                    LoadingView()
                 }
             }
             .defaultAppStorage(.standard)

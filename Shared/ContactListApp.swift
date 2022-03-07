@@ -16,6 +16,7 @@ struct ContactListApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .accentColor(.darkishPink)
                 .environmentObject(appState)
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }

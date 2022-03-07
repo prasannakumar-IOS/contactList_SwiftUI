@@ -17,7 +17,7 @@ struct CLTextFieldStyle: TextFieldStyle {
             .background(Color.steel12)
             .cornerRadius(5)
             .foregroundColor(.black85)
-            .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
+            .padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 15))
     }
 }
 
@@ -113,11 +113,12 @@ struct DisplayUserDataView: View {
                 .frame(maxWidth: .infinity,minHeight: 22, alignment: .leading)
                 .padding(EdgeInsets(top: 0, leading: 20, bottom: 15, trailing: 20))
                 .font(.custom("Lato-Regular", size: 18))
-                .foregroundColor(.darkishPink)
+                .foregroundColor(.black45)
         }
         .frame(maxWidth: .infinity)
         .background(Color.white)
         .cornerRadius(5)
+        .shadow(color: .black7, radius: 1, x: 0, y: 3)
         Spacer().frame(height: 6)
     }
 }

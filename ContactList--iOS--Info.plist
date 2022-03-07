@@ -4,9 +4,9 @@
 <dict>
 	<key>UIAppFonts</key>
 	<array>
-		<string>Lato-Regular</string>
-		<string>Lato-Semibold</string>
-		<string>Lato-Bold</string>
+		<string>Lato-Regular.ttf</string>
+		<string>Lato-Semibold.ttf</string>
+		<string>Lato-Bold.ttf</string>
 	</array>
 	<key>UILaunchScreen</key>
 	<dict>
