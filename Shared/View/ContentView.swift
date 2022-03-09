@@ -1,85 +1,28 @@
 //
 //  ContentView.swift
-//  Shared
+//  ContactList
 //
-//  Created by Prasannakumar Manikandan on 31/01/22.
+//  Created by Prasannakumar Manikandan on 09/03/22.
 //
 
 import SwiftUI
 
 struct ContentView: View {
     
-    @StateObject var logInViewModel = LogInViewModel()
-    @EnvironmentObject var appState: AppState
+    @StateObject private var loginViewModel = LogInViewModel()
+    private var isLoggedIn: Bool = (UserDefaults.standard.object(forKey: "isLoggedIn") != nil)
     
     var body: some View {
-        NavigationView {
-            ZStack {
-                CLBackgroundColor()
-                ScrollView {
-                    VStack {
-                        Image("logo")
-                            .resizable()
-                            .frame(width: 85, height: 85)
-                            .padding(EdgeInsets(top: 50, leading: 0, bottom: 50, trailing: 0))
-                        InputView(text: $logInViewModel.userName, titleText: "Username")
-                            .padding(.bottom, 0)
-                        SecureInputView(text: $logInViewModel.passWord, titleText: "Password")
-                            .padding(.bottom, 10)
-                        NavigationLink(destination: ContactListView( isContactList: $logInViewModel.isContactListOk), isActive: $logInViewModel.isContactListOk) {
-                            Button(action: {
-                                logInViewModel.logINUser()
-                            }) {
-                                Text("Login")
-                                    .foregroundColor(.white)
-                                    .font(.custom("Lato-Semibold", size: 17))
-                                    .frame(maxWidth: .infinity, minHeight: 50)
-                            }
-                        }
-                        .frame(maxWidth: .infinity, minHeight: 50)
-                        .background(Color.darkishPink)
-                        .cornerRadius(5)
-                        Spacer().frame(height: 58)
-                        Button(action: {}) {
-                            Text("Forgot password?")
-                                .navigationButtonTextViewModifiers()
-                        }
-                        Spacer().frame(height: 29)
-                        NavigationLink(destination: SignUpView(isSignUpOk: $logInViewModel.isSignUpOk), isActive: $logInViewModel.isSignUpOk) {
-                            Button(action: {
-                                logInViewModel.isSignUpOk = true
-                            }) {
-                                Text("Signup")
-                                    .navigationButtonTextViewModifiers()
-                            }
-                        }
-                        Spacer().frame(height: 220)
-                        Text("version 1.2")
-                            .font(.custom("Lato-Regular", size: 11))
-                            .foregroundColor(.steel)
-                    }
-                    .alert("Invalid", isPresented: $logInViewModel.userLogInEmailWrong, actions: {
-                        Button("OK", role: .cancel) { logInViewModel.userLogInEmailWrong = false }
-                    }, message: {Text("Please register your email ID :)")})
-                    .alert("Invalid", isPresented: $logInViewModel.userLogInPasswordWrong, actions: {
-                            Button("OK", role: .cancel) { logInViewModel.userLogInPasswordWrong = false }
-                    }, message: {Text("Invalid password, Please enter the valid password :)")})
-                    .textFieldStyle(CLTextFieldStyle())
-                    .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
-                    .onReceive(self.appState.$goToLogIn) { goToLogIn in
-                        if goToLogIn {
-                            appState.goToLogIn = false
-                        }
-                    }
-
-                }
-                if logInViewModel.isLoading {
-                    LoadingView()
-                }
-            }
-            .defaultAppStorage(.standard)
-            .navigationBarHidden(true)
-        }.navigationViewStyle(StackNavigationViewStyle())
+//        if isLoggedIn {
+//            ContactListView(isContactList: $loginViewModel.isContactListOk)
+//        } else {
+            LoginView()
+//        }
     }
 }
 
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}

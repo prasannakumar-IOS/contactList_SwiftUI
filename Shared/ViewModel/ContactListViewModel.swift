@@ -6,8 +6,15 @@
 //
 
 import SwiftUI
+import Combine
 
-class ContactListViewModel {
+class ContactListViewModel: ObservableObject {
+    
+    @Published var userContactList: [AllUsers] = []
+    @Published var pageNumber: Int = 121
+    @Published var isLoading: Bool = false
+    
+    var cancelToken: AnyCancellable?
     
     func customizeNavigationBar() {
         let appearance = UINavigationBarAppearance()
@@ -27,6 +34,30 @@ class ContactListViewModel {
             string[range].font = .custom("Lato-Bold", size: 18)
         }
         return string
+    }
+    
+    func getContactList() {
+        isLoading = true
+        cancelToken =  UserManager.shared.getUserDetails(url: URL(string: "\(APIUrlCalls.getAllUser.urlString)?page=\(pageNumber)")!).sink(receiveCompletion: { _ in }, receiveValue: { response in
+            if response.error != nil {
+                print(response.error)
+                print(response)
+                print("Error")
+                self.isLoading = false
+            } else if let data = response.data {
+                do {
+                    let value = try JSONDecoder().decode(AllUsersDetails.self, from: data)
+                    if let users = value.allUsers {
+                        self.userContactList.append(contentsOf: users)
+                        PersistenceManager.shared.saveData(userDatas: self.userContactList)
+                        self.isLoading = false
+                    }
+                } catch {
+                    
+                }
+            }
+        })
+        
     }
 }
 

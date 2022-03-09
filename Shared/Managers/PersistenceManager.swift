@@ -53,23 +53,60 @@ struct PersistenceManager {
         })
     }
     
-    func saveData(userDatas: [Any]) {
-        let userInfo = Users(context: container.viewContext)
-        userInfo.firstName = userDatas[0] as? String
-        userInfo.lastName = userDatas[1] as? String
-        userInfo.company = userDatas[2] as? String
-        userInfo.password = userDatas[3] as? String
-        userInfo.id = UUID().uuidString
-        userInfo.address = userDatas[4] as? String
-        userInfo.email = userDatas[5] as? String
-        userInfo.profilePicture = userDatas[6] as? Data
-        userInfo.phoneNumber = userDatas[7] as? String
-        if saveContext() {
-//
-        } else {
-//
+    func saveData(userDatas: [AllUsers]) {
+        for user in userDatas {
+            if isDuplicateUser(email: user.email ?? "") {
+                let users = Users(context: container.viewContext)
+                users.firstName = user.firstName
+                users.lastName = user.lastName
+                users.company = user.firstName
+                users.id = user.id ?? 1
+                users.email = user.email
+                users.address = user.address
+                users.phoneNumber = user.phoneNumber
+                users.createdAt = user.createdAt
+                users.dob = user.dob
+                users.profilePicture = Data(setProfilePic(firstName: String(user.firstName?.first ?? "N"), lastName: String(user.lastName?.first ?? "N")))
+                users.updatedAt = user.updatedAt
+                users.gender = user.gender
+            }
+        }
+        let _ = saveContext()
+    }
+    
+    func setProfilePic(firstName: String, lastName: String) -> NSData {
+        let nameInitialize = UILabel()
+        nameInitialize.frame.size = CGSize(width: 50.0, height: 50.0)
+        nameInitialize.textColor = UIColor.black25
+        nameInitialize.text = firstName + lastName
+        nameInitialize.textAlignment = NSTextAlignment.center
+        nameInitialize.backgroundColor = UIColor.paleGrey2
+        nameInitialize.layer.cornerRadius = 50.0
+        UIGraphicsBeginImageContext(nameInitialize.frame.size)
+        nameInitialize.layer.render(in: UIGraphicsGetCurrentContext()!)
+        let picture = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        let pictureData: NSData = picture.pngData()! as NSData
+        return pictureData
+    }
+    
+    func isDuplicateUser(email: String) -> Bool {
+        let emailTrim = email.trimmingCharacters(in: .whitespacesAndNewlines)
+        let fetchRequest: NSFetchRequest<Users> = Users.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "\("email") = %@", emailTrim)
+        
+        do {
+            let result = try container.viewContext.fetch(fetchRequest)
+            if result.count == 0 {
+                return true
+            } else {
+                return false
+            }
+        } catch {
+            return true
         }
     }
+
     
     func saveContext() -> Bool {
         let context = container.viewContext

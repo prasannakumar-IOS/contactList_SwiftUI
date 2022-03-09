@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import Combine
+import Alamofire
 
 class PersonDetailsDisplayViewModel: ObservableObject {
     
@@ -20,6 +22,9 @@ class PersonDetailsDisplayViewModel: ObservableObject {
     @Published var stateAddress: String = ""
     @Published var postalCode: String = ""
     @Published var profilePicture: Data = Data()
+    var cancelToken: AnyCancellable?
+    @Published var appState = AppState()
+    @Published var isLoading = false
     
     func fetchStarting(userEmail: String) {
         let userData = PersistenceManager.shared.fetchUserForLogin(userMail: userEmail)[0]
@@ -46,6 +51,20 @@ class PersonDetailsDisplayViewModel: ObservableObject {
             }
         }
         return UIImage(data: defaultPic)!
+    }
+    
+    func logoutUser() {
+        isLoading = true
+        let parameters = ["user[email]": email]
+        cancelToken = UserManager.shared.logOutAPI(parameters: parameters).sink(receiveValue: { response in
+            if response.error != nil {
+                print(response.error)
+                self.isLoading = false
+            } else if response.data != nil {
+                self.isLoading = false
+//                NavigationUtil.popToRootView()
+            }
+        })
     }
     
 }

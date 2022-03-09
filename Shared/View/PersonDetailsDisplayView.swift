@@ -18,12 +18,13 @@ struct PersonDetailsDisplayView: View {
     }
     var userDatas = Users()
     @State private var isEditOk = false
-    @EnvironmentObject var appState: AppState
+//    @EnvironmentObject var appState: AppState
     @State private var userLogInEmail = UserDefaults.standard.string(forKey: "userLogInEmail")
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @State private var isSharePresented = false
     @StateObject var personDetailsDisplayViewModel = PersonDetailsDisplayViewModel()
-    @State var degree = 0.0
+    @State private var degree = 0.0
+    @State private var isLogOut = false
 
     var body: some View {
         ZStack {
@@ -63,9 +64,9 @@ struct PersonDetailsDisplayView: View {
                         .background(Color.white)
                         .shadow(color: .black7, radius: 1, x: 0, y: 3)
                         Spacer().frame(height: 40)
-                        if userEmail == userLogInEmail {
+//                        if userEmail == userLogInEmail {
                             Button(action: {
-                                appState.goToLogIn = true
+                                personDetailsDisplayViewModel.logoutUser()
                             }) {
                                 Text("Log Out")
                                     .foregroundColor(.white)
@@ -75,8 +76,8 @@ struct PersonDetailsDisplayView: View {
                             .frame(maxWidth: .infinity, minHeight: 50)
                             .background(Color.darkishPink)
                             .cornerRadius(5)
-                        }
                     }
+//                    }
                     Button(action: {
                         isSharePresented = true
                     }) {
@@ -95,15 +96,21 @@ struct PersonDetailsDisplayView: View {
                 }
                 .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
             }
+            if personDetailsDisplayViewModel.isLoading {
+                LoadingView()
+            }
         }
-        .onReceive(self.appState.$goToLogIn) { goToLogIn in
+        .onReceive(personDetailsDisplayViewModel.appState.$goToLogIn) { goToLogIn in
             if goToLogIn {
                 dismiss()
             }
         }
-        .navigationBarItems(trailing: Button(action: {isEditOk = true}) {
-            Text("Edit")
-                .navigationButtonTextViewModifiers()
+        .navigationBarItems(trailing:
+        NavigationLink(destination: EditDetailsView(userEmail: userEmail), isActive: $isEditOk) {
+            Button(action: {isEditOk = true}) {
+                Text("Edit")
+                    .navigationButtonTextViewModifiers()
+            }
         })
         .navigationBarColor(.paleGrey2)
     }

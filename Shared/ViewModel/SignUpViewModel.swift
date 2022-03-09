@@ -31,7 +31,7 @@ class SignUpViewModel: ObservableObject {
         if isUserSignUpSuccess() {
             if isDuplicateEmail() {
                 let address = streetAddressFirst + "|" + streetAddressSecond + "|" + cityAddress + "|" + stateAddress + "|" + postalCode
-                persistenceManager.saveData(userDatas: [firstName, lastName, company, passWord, address, email, SetProfilePic(firstName: String(firstName.first ?? "N"), lastName: String(lastName.first ?? "N")), phoneNumber])
+//                persistenceManager.saveData(userDatas: [firstName, lastName, company, passWord, address, email, SetProfilePic(firstName: String(firstName.first ?? "N"), lastName: String(lastName.first ?? "N")), phoneNumber])
                 return true
             } else {
                 return false

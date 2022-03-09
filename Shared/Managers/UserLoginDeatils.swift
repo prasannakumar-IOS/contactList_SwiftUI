@@ -55,3 +55,35 @@ struct Token: Codable {
     }
     
 }
+
+struct AllUsersDetails: Codable {
+    var count: Int64?
+    var allUsers: [AllUsers]?
+    enum CodingKeys: String, CodingKey {
+        case count
+        case allUsers = "all_users"
+    }
+}
+
+struct AllUsers: Codable {
+    var id: Int64?
+    var email: String?
+    var createdAt: String?
+    var updatedAt: String?
+    var firstName: String?
+    var lastName: String?
+    var gender: String?
+    var phoneNumber: String?
+    var dob: Date?
+    var avatar: String?
+    var address: String?
+    
+    enum CodingKeys: String, CodingKey {
+        case id, email, gender, dob, avatar, address
+        case createdAt = "created_at"
+        case updatedAt = "updated_at"
+        case firstName = "first_name"
+        case lastName = "last_name"
+        case phoneNumber = "phone_number"
+    }
+}
